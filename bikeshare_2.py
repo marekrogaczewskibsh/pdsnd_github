@@ -201,6 +201,33 @@ def user_stats(df, city):
     print('-'*40)
 
 
+def print_raw_data(df):
+    """
+    Printing raw data
+
+    Args:
+        (dataframe) df - name of the data frame to analyze
+    """
+
+    start = 0
+    step = 5
+    question = '\nWould you like to view indiwiual trip data? Enter "yes" or "no": '
+    answer = ''
+
+    while answer not in ['yes', 'no']:
+        answer = input(question).lower()
+
+        if answer == 'no':
+            start = 0
+            answer = ''
+            break
+
+        if answer == 'yes':
+            print(df.iloc[start:start + step])
+            start += step
+            answer = ''
+
+
 def main():
     """
     Main function for test
